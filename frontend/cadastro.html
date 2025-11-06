@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Hotel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-card">
+            <div class="logo">
+                <h1>🏨 Hotel</h1>
+            </div>
+            <h2>Cadastro</h2>
+            <p class="subtitle">Crie sua conta para começar</p>
+            
+            <form id="cadastroForm" class="auth-form">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input 
+                        type="text" 
+                        id="nome" 
+                        name="nome" 
+                        placeholder="Seu nome completo" 
+                        required
+                        minlength="2"
+                        maxlength="100"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input 
+                        type="text" 
+                        id="cpf" 
+                        name="cpf" 
+                        placeholder="00000000000" 
+                        required
+                        maxlength="11"
+                        pattern="[0-9]{11}"
+                    >
+                    <small class="form-hint">Apenas números (11 dígitos)</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="seu@email.com" 
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone <span class="optional">(opcional)</span></label>
+                    <input 
+                        type="text" 
+                        id="telefone" 
+                        name="telefone" 
+                        placeholder="(00) 00000-0000"
+                        maxlength="15"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="endereco">Endereço <span class="optional">(opcional)</span></label>
+                    <input 
+                        type="text" 
+                        id="endereco" 
+                        name="endereco" 
+                        placeholder="Rua, número, bairro, cidade"
+                        maxlength="200"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input 
+                        type="password" 
+                        id="senha" 
+                        name="senha" 
+                        placeholder="Mínimo 6 caracteres" 
+                        required
+                        minlength="6"
+                    >
+                    <small class="form-hint">Mínimo de 6 caracteres</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmarSenha">Confirmar Senha</label>
+                    <input 
+                        type="password" 
+                        id="confirmarSenha" 
+                        name="confirmarSenha" 
+                        placeholder="Digite a senha novamente" 
+                        required
+                        minlength="6"
+                    >
+                </div>
+                
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <div id="successMessage" class="success-message" style="display: none;"></div>
+                
+                <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                    <span id="submitText">Cadastrar</span>
+                    <span id="submitLoader" class="loader" style="display: none;"></span>
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Já tem uma conta? <a href="login.html">Faça login</a></p>
+                <p><a href="index.html">Voltar para a página inicial</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="api.js"></script>
+    <script src="cadastro.js"></script>
+</body>
+</html>
+
