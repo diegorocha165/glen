@@ -11,22 +11,40 @@ Frontend para o sistema de hotel com páginas de cadastro e login.
 - `api.js` - Configuração e funções da API
 - `login.js` - Lógica de login
 - `cadastro.js` - Lógica de cadastro
+- `server.js` - Servidor Express para servir arquivos estáticos
+- `package.json` - Dependências e configuração do projeto
 
 ## Como usar
 
-1. Certifique-se de que o backend está rodando na porta 3000 (ou ajuste a URL em `api.js`)
+### Desenvolvimento Local
 
-2. Abra o arquivo `index.html` em um navegador ou use um servidor local:
-
+1. Instale as dependências:
    ```bash
-   # Usando Python
-   python -m http.server 8000
-   
-   # Usando Node.js (http-server)
-   npx http-server -p 8000
+   npm install
    ```
 
-3. Acesse `http://localhost:8000` no navegador
+2. Certifique-se de que o backend está rodando na porta 3000
+
+3. Inicie o servidor:
+   ```bash
+   npm start
+   ```
+
+4. Acesse `http://localhost:3001` no navegador
+
+### Usando servidor HTTP simples (alternativa)
+
+Se preferir não usar o servidor Express:
+
+```bash
+# Usando Python
+python -m http.server 8000
+
+# Usando Node.js (http-server)
+npx http-server -p 8000
+```
+
+**Nota**: Ao usar servidor HTTP simples, você precisará configurar a URL da API manualmente no arquivo `api.js`.
 
 ## Funcionalidades
 
@@ -46,12 +64,20 @@ Frontend para o sistema de hotel com páginas de cadastro e login.
 
 ## Configuração da API
 
-A URL da API está configurada em `api.js`. Por padrão, está configurada para:
-```javascript
-const API_BASE_URL = 'http://localhost:3000/api';
+A URL da API é configurada automaticamente:
+
+1. **Em desenvolvimento local**: Usa `http://localhost:3000/api` automaticamente
+2. **Em produção**: Configurada via variável de ambiente `API_URL` no servidor
+3. **Fallback**: Pode ser configurada manualmente no arquivo `api.js`
+
+### Configurar URL da API em produção
+
+No Render ou outro serviço de hospedagem, configure a variável de ambiente:
+```
+API_URL=https://seu-backend.onrender.com/api
 ```
 
-Se o backend estiver rodando em outra porta ou URL, ajuste essa constante.
+O servidor Express injeta automaticamente essa URL nos arquivos HTML.
 
 ## Armazenamento
 
@@ -67,4 +93,14 @@ O frontend possui um design moderno e responsivo com:
 - Animações suaves
 - Layout responsivo para mobile
 - Feedback visual para ações do usuário
+
+## Deploy
+
+Para fazer deploy no Render ou outro serviço, consulte `README-DEPLOY.md`.
+
+### Comandos disponíveis
+
+- `npm start` - Inicia o servidor de produção
+- `npm run dev` - Inicia o servidor (mesmo que start)
+- `npm install` - Instala as dependências
 

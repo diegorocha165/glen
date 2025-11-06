@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "jest"
+    "test": "jest",
+    "validate-env": "node validate-env.js",
+    "generate-secret": "node -e \"console.log(require('crypto').randomBytes(64).toString('hex'))\""
   },
   "keywords": ["api", "crud", "usuarios", "supabase", "soft-delete"],
   "author": "",
